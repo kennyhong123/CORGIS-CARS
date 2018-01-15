@@ -1,13 +1,10 @@
 {% extends "layout.html" %}
-{% block body %}
-<div class="divider">
-  <p>The highest horsepower in this dataser is {{length}}.</p>
-  <form action="/horsepower">
-    <select name="horsepower">
-      {{ Horsepower }}
-    </select>
-    <input type="submit" value="Submit">
-  </form>  
-  {{ info }}  
-</div>
+
+{% set active_page = "horsepower" %}
+
+{% block title %}Highest Horsepower{% endblock %}
+
+{% block content %}
+  <h2>Highest Horsepower</h2>
+  <p>The highet horsepower in this data set is{{ highest }}</p>
 {% endblock %}

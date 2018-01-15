@@ -8,11 +8,11 @@ app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  
 def render_main():
     return render_template('home.html')
 @app.route("/horsepower")
-def render_largest_dams():
+def render_horsepower():
     with open('cars.json') as cars_data:
         cars = json.load(cars_data)
     longestData = get_longest_dam(cars)
-    return render_template('horsepower.html', longest = longestData[0], length = longestData[1])
+    return render_template('horsepower.html', length = longestData[1])
 @app.route("/dataByDam")
 def render_data_by_dam():
     with open('hydropower.json') as dams_data:

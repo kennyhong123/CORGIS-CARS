@@ -12,5 +12,13 @@ def render_main():
 def render_identifications():
     return render_template('identifications.html')
 
+@app.route("/horsepower")
+def render_horsepower():
+    return render_template('horsepower.html')
+
+@app.route("/identifications")
+def render_identifications():
+    return render_template('identifications.html')
+
 if __name__=="__main__":
     app.run(debug=False, port=54321)

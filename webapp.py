@@ -10,7 +10,7 @@ def render_main():
 
 @app.route("/horsepower")
 def render_highest_horsepower():
-    with open('car.json') as cars_data:
+    with open('cars.json') as cars_data:
         cars = json.load(cars_data)
     highestData = get_highest_horsespower(cars)
     return render_template('horsepower.html', highest = highestData[1])

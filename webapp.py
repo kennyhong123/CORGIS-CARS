@@ -9,7 +9,7 @@ def render_main():
     return render_template('home.html')
 
 @app.route("/laregstCars")
-def render_largest_cars():
+def render_largestCars():
     with open('cars.json') as cars_data:
         cars = json.load(cars_data)
     longestData = get_longest_car(cars)

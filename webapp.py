@@ -33,7 +33,7 @@ def get_longest_car(cars)
             longestCar = c["Identification"]["Make"]
     return [longestCar, length]
       
-def gget_tallest_car(cars):
+def get_tallest_car(cars):
     height = 0
     tallestCar = ""
     for c in cars:

@@ -6,16 +6,25 @@ app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  
 
 with open('cars.json') as car_data:
         data = json.load(car_data)
+	
+def get_car_names():
+	options = ""
+	
+	for food in data:
+		options += Markup("<option value=" +'"'+ car["Description"] +'">'+ car["Description"] + "</option>")
+    
+	return options
 
 def get_identi_info(name):
 	info = ""
 	for car in data:
-		if name == car["Identification"]:
-			info += Markup("<p>"+"Make: " + str(car["Identification"]["Make"]) +"</p>")
-			info += Markup("<p>"+"Model Year: " + str(car["Identification"]["Model Year"])+"</p>")
-			info += Markup("<p>"+ "ID: " + str(car["Identification"]["ID"]) + "</p>")
-			info += Markup("<p>"+"Classification: " + str(car["Identification"]["Classification"])+"</p>")
-			info += Markup("<p>"+"Year: " + str(car["Identification"]["Year"])+"</p>")
+		if name == car["Descriptions"]:
+			fact += Markup("<p><b>"+ car["Description"] + "</b></p>")
+			info += Markup("<p>"+"Make: " + str(car["Data"]["Identification"]["Make"]) +"</p>")
+			info += Markup("<p>"+"Model Year: " + str(car["Data"]["Identification"]["Model Year"])+"</p>")
+			info += Markup("<p>"+ "ID: " + str(car["Data"]["Identification"]["ID"]) + "</p>")
+			info += Markup("<p>"+"Classification: " + str(car["Data"]["Identification"]["Classification"])+"</p>")
+			info += Markup("<p>"+"Year: " + str(car["Data"]["Identification"]["Year"])+"</p>")
 	return info
 
 @app.route("/")

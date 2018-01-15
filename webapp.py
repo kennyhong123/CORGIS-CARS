@@ -4,35 +4,24 @@ import json
 
 app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  Otherwise, it is the name of the file (ex. webapp)
 
-with open('cars.json') as car_data:
-        data = json.load(car_data)
-	
-def get_car_names():
-	options = ""
-	
-	for food in data:
-		options += Markup("<option value=" +'"'+ car["Description"] +'">'+ car["Description"] + "</option>")
-    
-	return options
-
-def get_identi_info(name):
-	info = ""
-	for car in data:
-		if name == car["Identifications"]:
-			info += Markup("<p>"+"Make: " + str(car["Identification"]["Make"]) +"</p>")
-			info += Markup("<p>"+"Model Year: " + str(car["Identification"]["Model Year"])+"</p>")
-			info += Markup("<p>"+ "ID: " + str(car["Identification"]["ID"]) + "</p>")
-			info += Markup("<p>"+"Classification: " + str(car["Identification"]["Classification"])+"</p>")
-			info += Markup("<p>"+"Year: " + str(car["Identification"]["Year"])+"</p>")
-	return info
-
 @app.route("/")
 def render_main():
     return render_template('home.html')
 
 @app.route("/horsepower")
-def render_horsepower():
-    return render_template('horsepower.html')
+def render_highest_horsepower():
+    with open('cars.json') as car_data:
+        cars = json.load(car_data)
+    highestHorsepower = get_highest_horsepower(cars)
+    return render_template('largest-dams.html', highest = highestHorsepower[0], length = highestHorsepower[1])
+
+def get_highest_horsepower(cars):
+	length = 0
+	highestHorsepower = ""
+	for c in cars:
+		c['Engine Information']['Engine Statistics']['Horsepower'] > length:
+		length = c['Engine Information']['Engine Statistics']['Horsepower']
+	return [highestHorsepower,length]
 
 if __name__=="__main__":
     app.run(debug=False, port=54321)

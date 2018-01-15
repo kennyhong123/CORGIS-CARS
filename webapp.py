@@ -18,13 +18,12 @@ def get_car_names():
 def get_identi_info(name):
 	info = ""
 	for car in data:
-		if name == car["Descriptions"]:
-			fact += Markup("<p><b>"+ car["Description"] + "</b></p>")
-			info += Markup("<p>"+"Make: " + str(car["Data"]["Identification"]["Make"]) +"</p>")
-			info += Markup("<p>"+"Model Year: " + str(car["Data"]["Identification"]["Model Year"])+"</p>")
-			info += Markup("<p>"+ "ID: " + str(car["Data"]["Identification"]["ID"]) + "</p>")
-			info += Markup("<p>"+"Classification: " + str(car["Data"]["Identification"]["Classification"])+"</p>")
-			info += Markup("<p>"+"Year: " + str(car["Data"]["Identification"]["Year"])+"</p>")
+		if name == car["Identifications"]:
+			info += Markup("<p>"+"Make: " + str(car["Identification"]["Make"]) +"</p>")
+			info += Markup("<p>"+"Model Year: " + str(car["Identification"]["Model Year"])+"</p>")
+			info += Markup("<p>"+ "ID: " + str(car["Identification"]["ID"]) + "</p>")
+			info += Markup("<p>"+"Classification: " + str(car["Identification"]["Classification"])+"</p>")
+			info += Markup("<p>"+"Year: " + str(car["Identification"]["Year"])+"</p>")
 	return info
 
 @app.route("/")
@@ -33,7 +32,7 @@ def render_main():
 
 @app.route("/identifications")
 def render_identifications():
-    return render_template('identifications.html', Identifications = get_car_names())
+    return render_template('identifications.html', Identifications = get_identi_info())
 
 @app.route("/horsepower")
 def render_horsepower():

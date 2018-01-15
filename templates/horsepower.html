@@ -1,1 +1,13 @@
-
+{% extends "layout.html" %}
+{% block body %}
+<div class="divider">
+  <p>Horsepower for each cars.</p>
+  <form action="/horsepower">
+    <select name="horsepower">
+      {{ Horsepower }}
+    </select>
+    <input type="submit" value="Submit">
+  </form>  
+  {{ info }}  
+</div>
+{% endblock %}

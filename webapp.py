@@ -10,12 +10,12 @@ def render_main():
 
 @app.route("/largestCars")
 def render_largest_cars():
-   with open('hydropower.json') as dams_data:
-        dams = json.load(dams_data)
-        longestData = get_longest_dam(dams)
-        tallestData = get_tallest_dam(dams)
-    return render_template('largest-dams.html', longest = longestData[0], length = longestData[1], tallest = tallestData[0], height = tallestData[1])
- 
+  with open('cars.json') as cars_data:
+        cars = json.load(cars_data)
+    longestData = get_longest_car(cars)
+    tallestData = get_tallest_car(cars)
+    return render_template('largest-cars.html',longest = longestData[0], length = longestData[1], tallest = tallestData[0], height = tallestData[1])
+
 def get_car_options(cars):
     names = []
     options = ""

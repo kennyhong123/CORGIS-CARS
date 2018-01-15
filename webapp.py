@@ -22,7 +22,7 @@ def get_car_options(cars):
     for c in cars:
         if c["Identification"]["Make"] not in cars:
             names.append(c["Identification"]["Make"])
-        options += Markup("<option value=\"" + d["Identification"]["Make"] + "\">" + d["Identification"]["Make"] + "</option>")
+        options += Markup("<option value=\"" + c["Identification"]["Make"] + "\">" + c["Identification"]["Make"] + "</option>")
         
 def get_longest_car(cars)
     length = 0

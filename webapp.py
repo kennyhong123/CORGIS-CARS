@@ -19,7 +19,6 @@ def get_identi_info(name):
 	info = ""
 	for car in data:
 		if name == car["Identification"]:
-			info += Markup("<p><b>"+ car["Identications"] + "</b></p>")
 			info += Markup("<p>"+"Make: " + str(car["Identification"]["Make"]) +"</p>")
 			info += Markup("<p>"+"Model Year: " + str(car["Identification"]["Model Year"])+"</p>")
 			info += Markup("<p>"+ "ID: " + str(car["Identification"]["ID"]) + "</p>")

@@ -9,7 +9,7 @@ def render_main():
     return render_template('home.html')
 
 @app.route("/identifications")
-def render_main():
+def render_identifications():
     return render_template('identifications.html')
 
 if __name__=="__main__":

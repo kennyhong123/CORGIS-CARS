@@ -13,7 +13,7 @@ def render_highest_horsepower():
     with open('cars.json') as car_data:
         cars = json.load(car_data)
     highestHorsepower = get_highest_horsepower(cars)
-    return render_template('largest-dams.html', highest = highestHorsepower[0], length = highestHorsepower[1])
+    return render_template('horsepower.html', highest = highestHorsepower[0], length = highestHorsepower[1])
 
 def get_highest_horsepower(cars):
 	length = 0

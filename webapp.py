@@ -15,13 +15,25 @@ def get_car_names():
     
 	return options
 
+def get_identi_info(name):
+	info = ""
+	for car in data:
+		if name == car["Identification"]:
+			info += Markup("<p><b>"+ car["Identications"] + "</b></p>")
+			info += Markup("<p>"+"Make: " + str(car["Identification"]["Make"]) +"</p>")
+			info += Markup("<p>"+"Model Year: " + str(car["Identification"]["Model Year"])+"</p>")
+			info += Markup("<p>"+ "ID: " + str(car["Identification"]["ID"]) + "</p>")
+			info += Markup("<p>"+"Classification: " + str(car["Identification"]["Classification"])+"</p>")
+			info += Markup("<p>"+"Year: " + str(car["Identification"]["Year"])+"</p>")
+	return info
+
 @app.route("/")
 def render_main():
     return render_template('home.html')
 
 @app.route("/identifications")
 def render_identifications():
-    return render_template('identifications.html')
+    return render_template('identifications.html', Identifications = get_car_names())
 
 @app.route("/horsepower")
 def render_horsepower():

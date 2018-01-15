@@ -1,1 +1,12 @@
-
+{% extends "layout.html" %}
+{% block body %}
+<div class="divider">
+  <form action="/highwayMpg">
+    <select name="highwayMpg">
+      {{ highwayyMpg }}
+    </select>
+    <input type="submit" value="Submit">
+  </form>  
+  {{ info }}  
+</div>
+{% endblock %}

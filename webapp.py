@@ -10,8 +10,37 @@ def render_main():
 
 @app.route("/largestCars")
 def render_largest_cars():
-    return render_template('largest-cars.html')
+   with open('hydropower.json') as dams_data:
+        dams = json.load(dams_data)
+        longestData = get_longest_dam(dams)
+        tallestData = get_tallest_dam(dams)
+    return render_template('largest-dams.html', longest = longestData[0], length = longestData[1], tallest = tallestData[0], height = tallestData[1])
  
-
+def get_car_options(cars):
+    names = []
+    options = ""
+    for c in cars:
+        if c["Identification"]["Make"] not in cars:
+            names.append(c["Identification"]["Make"])
+        options += Markup("<option value=\"" + c["Identification"]["Make"] + "\">" + c["Identification"]["Make"] + "</option>")
+        
+def get_longest_car(cars)
+    length = 0
+    longestCar = ""
+    for c in cars:
+        if c["Dimensions"]["Length"] > length:
+            length = c["Dimensions"]["Length"]
+            longestCar = c["Identification"]["Make"]
+    return [longestCar, length]
+      
+def get_tallest_car(cars):
+    height = 0
+    tallestCar = ""
+    for c in cars:
+        if c["Dimensions"]["Height"] > height:
+            height = c["Dimensions"]["Height"]
+            tallestCar = c["Identification"]["Make"]
+    return [tallestCar, height]
+    
 if __name__=="__main__":
     app.run(debug=False, port=54321)

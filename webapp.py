@@ -63,8 +63,8 @@ def get_dams_per_state(dams, selected_state):
 def get_longest_dam(cars):
     length = 0
     for d in cars:
-        if d["Engine Information"]["Engine Statistics"]["Horsepower"] > length:
-            length = d["Engine Information"]["Engine Statistics"]["Horsepower"]
+        if d["Engine Statistics"]["Horsepower"] > length:
+            length = d["Engine Statistics"]["Horsepower"]
     return length
 
 if __name__=="__main__":

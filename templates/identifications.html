@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="divider">
+  <p class="question">Identifications for each car brands</p>
+  <p class="disclaimer">Types of car and their model.</p>
+  <form action="/yargg">
+    <select name="mins">
+      {{ MajorMinerals }}
+    </select>
+    <input type="submit" value="Submit">
+  </form>  
+  {{ info }}  
+</div>
+{% endblock %}

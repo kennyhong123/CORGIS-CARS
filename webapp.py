@@ -30,10 +30,6 @@ def get_identi_info(name):
 def render_main():
     return render_template('home.html')
 
-@app.route("/identifications")
-def render_identifications():
-    return render_template('identifications.html', Identifications = get_identi_info())
-
 @app.route("/horsepower")
 def render_horsepower():
     return render_template('horsepower.html')

@@ -7,14 +7,6 @@ app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  
 with open('cars.json') as car_data:
         data = json.load(car_data)
 
-def get_car_names():
-	options = ""
-	
-	for car in data:
-		options += Markup("<option value=" +'"'+ car["Identification"] +'">'+ car["Identification"] + "</option>")
-    
-	return options
-
 def get_identi_info(name):
 	info = ""
 	for car in data:
@@ -32,7 +24,7 @@ def render_main():
 
 @app.route("/identifications")
 def render_identifications():
-    return render_template('identifications.html', Identifications = get_car_names())
+    return render_template('identifications.html')
 
 @app.route("/horsepower")
 def render_horsepower():

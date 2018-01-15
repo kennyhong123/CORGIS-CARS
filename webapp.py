@@ -16,9 +16,5 @@ def render_identifications():
 def render_horsepower():
     return render_template('horsepower.html')
 
-@app.route("/identifications")
-def render_identifications():
-    return render_template('identifications.html')
-
 if __name__=="__main__":
     app.run(debug=False, port=54321)

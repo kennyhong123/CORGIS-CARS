@@ -9,7 +9,7 @@ def render_main():
     return render_template('home.html')
 @app.route("/horsepower")
 def render_largest_dams():
-    with open('hydropower.json') as dams_data:
+    with open('car.json') as dams_data:
         dams = json.load(dams_data)
     longestData = get_longest_dam(dams)
     tallestData = get_tallest_dam(dams)

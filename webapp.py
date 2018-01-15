@@ -33,7 +33,7 @@ def render_main():
 
 @app.route("/identifications")
 def render_identifications():
-    return render_template('identifications.html')
+    return render_template('identifications.html', Identifications = get_car_names())
 
 @app.route("/horsepower")
 def render_horsepower():

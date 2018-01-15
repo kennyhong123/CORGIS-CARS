@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% set active_page = "largestCars" %}
+
+{% block title %}Largest Car{% endblock %}
+
+{% block content %}
+  <h2>Largest Cars</h2>
+  <p>The longest car in this dataset is {{ longest }} with a length of {{ length }} feet</p>
+  <p>The tallest car in this dataset is {{ tallest }} with a height of {{ height }} feet</p>
+{% endblock %}

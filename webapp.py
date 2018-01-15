@@ -9,12 +9,10 @@ def render_main():
     return render_template('home.html')
 @app.route("/horsepower")
 def render_largest_dams():
-    with open('car.json') as dams_data:
-        dams = json.load(dams_data)
-    longestData = get_longest_dam(dams)
-    tallestData = get_tallest_dam(dams)
-    return render_template('horsepower.html', longest = longestData[0], length = longestData[1], tallest = tallestData[0], height = tallestData[1])
-
+    with open('cars.json') as cars_data:
+        cars = json.load(cars_data)
+    longestData = get_longest_dam(cars)
+    return render_template('horsepower.html', longest = longestData[0], length = longestData[1])
 @app.route("/dataByDam")
 def render_data_by_dam():
     with open('hydropower.json') as dams_data:
@@ -62,22 +60,12 @@ def get_dams_per_state(dams, selected_state):
             numDams += 1
     return numDams
 
-def get_longest_dam(dams):
+def get_longest_dam(cars):
     length = 0
-    longestDam = ""
-    for d in dams:
-        if d["Dimensions"]["Crest Length"] > length:
-            length = d["Dimensions"]["Crest Length"]
-            longestDam = d["Identity"]["Name"]
-    return [longestDam, length]
+    for d in cars:
+        if d["Engine Information"]["Engine Statistics"]["Horsepower"] > length:
+            length = d["Engine Information"]["Engine Statistics"]["Horsepower"]
+    return length
 
-def get_tallest_dam(dams):
-    height = 0
-    tallestDam = ""
-    for d in dams:
-        if d["Dimensions"]["Structural Height"] > height:
-            height = d["Dimensions"]["Structural Height"]
-            tallestDam = d["Identity"]["Name"]
-    return [tallestDam, height]
 if __name__=="__main__":
     app.run(debug=False, port=54321)

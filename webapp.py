@@ -24,7 +24,7 @@ def render_largestCars():
     
 @app.route("/mpgPerCars")
 def render_mpg_per_cars():
-    return render_template('mpg-per-car.html')
+    return render_template('mpg-per-car.html', option = get_car_options())
 
 def get_mpg_per_car(cars):
     

@@ -12,5 +12,9 @@ def render_main():
 def render_largestCars():
     return render_template('largest-cars.html')
     
+@app.route("/mpgPerCars")
+def render_mpg_per_cars():
+    return render_template('mpgPerCars.html')
+
 if __name__=="__main__":
     app.run(debug=False, port=54321)

@@ -1,1 +1,16 @@
+{% extends "layout.html" %}
 
+{% set active_page = "mpgPerCar" %}
+
+{% block title %}Mpg Per Car{% endblock %}
+
+{% block content %}
+  <h2>Find a Car</h2>
+  <form action = "/mpgPerCar">
+    <select name = "car">
+      {{ options }}
+    </select>
+   <br><br>
+   <input type="submit">
+  </form>
+{% endblock %}

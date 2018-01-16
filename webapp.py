@@ -22,7 +22,7 @@ def render_mpg_per_cars():
 
 @app.route("/horsepowerPerCars")
 def render_horsepower_per_cars():
-    return render_template('horepower-per-car.html')
+    return render_template('horsepower-per-car.html')
 
 
 if __name__=="__main__":

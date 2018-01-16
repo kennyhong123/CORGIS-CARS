@@ -4,9 +4,6 @@ import json
 
 app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  Otherwise, it is the name of the file (ex. webapp)
 
-with open('car.json') as car_data:
-    data = json.load(car_data)
-
 
 @app.route("/")
 def render_main():

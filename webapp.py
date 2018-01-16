@@ -7,14 +7,6 @@ app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  
 with open('car.json') as car_data:
     data = json.load(car_data)
 
-def get_car_options():
-    car = data[0]["Identification"]["ID"]
-    options = ""
-    for c in data:
-        if car != c["Identificaton"]["ID"]
-        options += Markup("option value=" + '""' + car["Identification"]["ID"] + '">' + car["Identification"]["ID"] + "</option>")
-        car = c["Identification"]["ID"]
-    return options
 
 @app.route("/")
 def render_main():
@@ -24,12 +16,13 @@ def render_main():
 def render_largestCars():
     return render_template('largest-cars.html')
     
-@app.route("/mpgPerCars", methods=['GET','POST'])
+@app.route("/mpgPerCars")
 def render_mpg_per_cars():
-    return render_template('mpg-per-car.html', option = get_car_options())
+    return render_template('mpg-per-car.html')
 
-def get_mpg_per_car(cars):
-    
+@app.route("/horsepowerPerCars")
+def render_horsepower_per_cars():
+    return render_template('horepower-per-car.html')
 
 
 if __name__=="__main__":

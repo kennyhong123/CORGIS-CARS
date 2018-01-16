@@ -7,9 +7,10 @@ app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  
 with open('car.json') as car_data:
     data = json.load(car_data)
 
-def get_car_names():
+def get_car_options():
+    car = data[0]["Identification"]["ID"]
     options = ""
-    for car in data:
+    for c in data:
         options += Markup("option value=" + '""' + car["Identification"]["ID"] + '">' + car["Identification"]["ID"] + "</option>")
     return options
 

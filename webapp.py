@@ -11,7 +11,9 @@ def get_car_options():
     car = data[0]["Identification"]["ID"]
     options = ""
     for c in data:
+        if car != c["Identificaton"]["ID"]
         options += Markup("option value=" + '""' + car["Identification"]["ID"] + '">' + car["Identification"]["ID"] + "</option>")
+        car = c["Identification"]["ID"]
     return options
 
 @app.route("/")

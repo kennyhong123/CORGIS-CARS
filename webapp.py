@@ -19,7 +19,7 @@ def get_highmpg(model):
 	for c in cars:
 		if c["Identification"]["ID"] == model:
 			fact += Markup("<p>"+ "Highway MPG: "+str(c["Fuel Information"]["Highway mpg"]) + "</p>")
-			fact += Markup("<p>"+ "City MPG: "+str(c["Fuel Information"]["City mph"]) + "</p>")
+			fact += Markup("<p>"+ "City MPH: "+str(c["Fuel Information"]["City mph"]) + "</p>")
 			fact += Markup("<p>"+ "Fuel Type: "+c["Fuel Information"]["Fuel Type"] + "</p>")
 	return fact
 	

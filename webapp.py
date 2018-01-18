@@ -23,6 +23,17 @@ def get_highmpg(model):
 			fact += Markup("<p>"+ "Fuel Type: "+c["Fuel Information"]["Fuel Type"] + "</p>")
 	return fact
 	
+def get_horsepower(horse):
+	yo = ""
+	for c in cars:
+		if c["Identification"]["ID"] == horse
+		yp += Markup("<p>"+ str(c["Engine Information"]["Engine Statistics"]["Horsepower"]) + "</p>")
+	return yo
+
+@app.route("/horsepowerPerCars")
+def render_horsepower():
+	horse = request.args['car']
+	return render_template('horsepower-per-car.html,', options=get_car_options(), yo=get_horsepower(horse))
 @app.route("/mpgPerCar")
 def render_highmpg():
 	model = request.args['car']

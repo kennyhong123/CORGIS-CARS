@@ -21,7 +21,7 @@ def get_car_options(cars):
     names = []
     options = ""
     for c in cars:
-        if c["Identification"]["Make"] not in cars:
+        if c["Identification"]["ID"] not in cars:
             names.append(c["Identification"]["ID"])
         options += Markup("<option value=\"" + c["Identification"]["Make"] + "\">" + c["Identification"]["Make"] + "</option>")
     return options

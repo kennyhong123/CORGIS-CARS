@@ -34,7 +34,7 @@ def get_horsepower(power):
 @app.route("/horsepowerPerCars")
 def render_horsepower():
 	power = request.args['car']
-	return render_template('horsepower-per-car.html,', options=get_car_options(), yo=get_horsepower(power))
+	return render_template('horsepower-per-car.html', options=get_car_options(), yo=get_horsepower(power))
 @app.route("/mpgPerCar")
 def render_highmpg():
 	model = request.args['car']

@@ -5,26 +5,14 @@ import json
 app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  Otherwise, it is the name of the file (ex. webapp)
 
 with open('cars.json') as cars_data:
-        cars = json.load(cars_data)
+		cars = json.load(cars_data)
 
-@app.route("/")
-def render_main():
-    return render_template('home.html')
-
-@app.route("/largestCars")
-def render_largestCars():
-    with open('cars.json') as cars_data:
-        cars = json.load(cars_data)
-    longestData = get_longest_car(cars)
-    tallestData = get_tallest_car(cars)
-    return render_template('largest-cars.html',longest = longestData[0], length = longestData[1], tallest = tallestData[0], height = tallestData[1])
- 
 def get_car_options():
-    options = ""
-    for c in cars:
-        if c["Identification"]["ID"] not in cars:
-            options += Markup('<option value="' + c["Identification"]["ID"] + '">"' + c["Identification"]["ID"] + "</option>")
-    return options
+	options = ""
+	for c in cars:
+		if c["Identification"]["ID"] not in cars:
+			options += Markup("<option value=\"" + c["Identification"]["ID"] + "\">" + c["Identification"]["ID"] + "</option>")
+	return options
 
 def get_longest_car(cars):
     length = 0
@@ -44,10 +32,21 @@ def get_tallest_car(cars):
             tallestCar = c["Identification"]["ID"]
     return [tallestCar, height]
 
+@app.route("/")
+def render_main():
+    return render_template('home.html')
 
+@app.route("/largestCars")
+def render_largestCars():
+    with open('cars.json') as cars_data:
+        cars = json.load(cars_data)
+    longestData = get_longest_car(cars)
+    tallestData = get_tallest_car(cars)
+    return render_template('largest-cars.html',longest = longestData[0], length = longestData[1], tallest = tallestData[0], height = tallestData[1])
+    
 @app.route("/mpgPerCars")
 def render_mpg_per_cars():
-    return render_template('mpg-per-car.html')
+    return render_template('mpg-per-car.html',options=get_car_options())
 
 @app.route("/horsepowerPerCars")
 def render_horsepower_per_cars():
@@ -55,4 +54,4 @@ def render_horsepower_per_cars():
 
 
 if __name__=="__main__":
-    app.run(debug=False, port=54321)
+    app.run(debug=True, port=54321)

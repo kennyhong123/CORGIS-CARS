@@ -29,8 +29,16 @@ def get_horsepower(power):
 		if c["Identification"]["ID"] == power:
 			yo += Markup("<p>"+ "Transmission: "+c["Engine Information"]["Transmission"] + "</p>")
 			yo += Markup("<p>"+ "Engine Type: "+c["Engine Information"]["Engine Type"] + "</p>")
+			yo += Markup("<p>"+ "Horsepower: "+str(c["Engine Information"]["Engine Statistics"]["Horsepower"]) + "</p>")
+			yo += Markup("<p>"+ "Hybrid: "+str(c["Engine Information"]["Hybrid"]) + "</p>")
+			yo += Markup("<p>"+ "Number of Forward Gears: "+str(c["Engine Information"]["Number of Forward Gears"]) + "</p>")
+			yo += Markup("<p>"+ "Driveline: "+str(c["Engine Information"]["Driveline"]) + "</p>")
 	return yo
-	
+
+@app.route("/horsepowerPerCar")
+def render_horsepower():
+    power = request.args['car']
+    return render_template('horsepower-per-car.html',options=get_car_options(),yo=get_horsepower(power))
 	
 @app.route("/mpgPerCar")
 def render_highmpg():
@@ -73,8 +81,6 @@ def render_mpg_per_cars():
 
 @app.route("/horsepowerPerCars")
 def render_horsepower_per_cars():
-    if 'car' in request.args:
-        return render_template('horsepower-per-car.html',options=get_car_options(),yo=get_horsepower(power))
     return render_template('horsepower-per-car.html', options=get_car_options())
 
 

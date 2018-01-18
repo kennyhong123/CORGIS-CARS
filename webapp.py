@@ -9,7 +9,7 @@ app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  
 def render_main():
     return render_template('home.html')
 
-@app.route("/laregstCars")
+@app.route("/largestCars")
 def render_largestCars():
     with open('cars.json') as cars_data:
         cars = json.load(cars_data)
@@ -26,7 +26,7 @@ def get_car_options(cars):
         options += Markup("<option value=\"" + c["Identification"]["Make"] + "\">" + c["Identification"]["Make"] + "</option>")
     return options
 
-def get_longest_car(cars)
+def get_longest_car(cars):
     length = 0
     longestCar = ""
     for c in cars:

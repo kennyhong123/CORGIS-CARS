@@ -4,6 +4,8 @@ import json
 
 app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  Otherwise, it is the name of the file (ex. webapp)
 
+with open('cars.json') as cars_data:
+        cars = json.load(cars_data)
 
 @app.route("/")
 def render_main():
@@ -17,13 +19,11 @@ def render_largestCars():
     tallestData = get_tallest_car(cars)
     return render_template('largest-cars.html',longest = longestData[0], length = longestData[1], tallest = tallestData[0], height = tallestData[1])
  
-def get_car_options(cars):
-    names = []
+def get_car_options():
     options = ""
     for c in cars:
         if c["Identification"]["ID"] not in cars:
-            names.append(c["Identification"]["ID"])
-        options += Markup("<option value=\"" + c["Identification"]["Make"] + "\">" + c["Identification"]["Make"] + "</option>")
+            options += Markup("<option value="" + c["Identification"]["ID"] + "">" + c["Identification"]["ID"] + "</option>")
     return options
 
 def get_longest_car(cars):
@@ -43,7 +43,8 @@ def get_tallest_car(cars):
             height = c["Dimensions"]["Height"]
             tallestCar = c["Identification"]["ID"]
     return [tallestCar, height]
-    
+
+
 @app.route("/mpgPerCars")
 def render_mpg_per_cars():
     return render_template('mpg-per-car.html')

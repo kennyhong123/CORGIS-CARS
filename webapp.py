@@ -43,6 +43,10 @@ def get_tallest_car(cars):
 def render_main():
     return render_template('home.html')
 
+@app.route("/mpgPerCars")
+def render_mpg_per_cars():
+    return render_template('mpg-per-car.html',options=get_car_options())
+
 @app.route("/mpgPerCar")
 def render_highmpg():
     model = request.args['car']

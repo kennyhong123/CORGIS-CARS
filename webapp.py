@@ -29,7 +29,6 @@ def get_horsepower(power):
 		if c["Identification"]["ID"] == power:
 			yo += Markup("<p>"+ "Transmission: "+c["Engine Information"]["Transmission"] + "</p>")
 			yo += Markup("<p>"+ "Engine Type: "+c["Engine Information"]["Engine Type"] + "</p>")
-			yo += Markup("<p>"+ "Horsepower: "+str(c["Engine Information"]["Engine Statistics"]["Horsepower"]) + "</p>")
 	return yo
 
 @app.route("/horsepowerPerCars")
